@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "28137564212",
+    "project_id": "faccy-app",
+    "storage_bucket": "faccy-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28137564212:android:a5774a8ed782e4c10c8261",
+        "android_client_info": {
+          "package_name": "com.example.faccy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIi7YBW-kJ47vR0VO8pWc7JWFoRxCJiG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
