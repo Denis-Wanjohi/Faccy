@@ -1,4 +1,5 @@
 import 'package:example_5/pages/home_page.dart';
+import 'package:example_5/pages/new_recipe_page.dart';
 import 'package:example_5/pages/recipe_page.dart';
 import 'package:flutter/material.dart';
 
@@ -33,8 +34,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const RecipePage(),
-      // home: const HomePage(),
+      // home: const NewRecipePage(),
+      home: const HomePage(),
     );
   }
 }

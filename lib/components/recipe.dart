@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:example_5/model/Recipe_model.dart';
+import 'package:example_5/pages/home_page.dart';
+import 'package:example_5/pages/recipe_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_image_converter/flutter_image_converter.dart';
 
 class Recipe extends StatefulWidget {
   const Recipe({super.key});
@@ -19,7 +19,7 @@ class _RecipeState extends State<Recipe> {
     final url = Uri.parse('https://dummyjson.com/recipes?limit=10');
     final response = await http.get(url);
     // print(jsonDecode(response.body)['recipes']);
-    
+
     if (response.statusCode == 200) {
       for (var post in jsonDecode(response.body)['recipes']) {
         recipes.add(Recipe_model.fromJson(post));
@@ -29,8 +29,6 @@ class _RecipeState extends State<Recipe> {
       throw Exception('Failed to load posts');
     }
   }
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +50,22 @@ class _RecipeState extends State<Recipe> {
               itemCount: recipes.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  onTap: (){
-                    
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RecipePage(
+                                name: recipes[index].name,
+                                image: recipes[index].image,
+                                tags: recipes[index].tags,
+                                ratings: recipes[index].ratings,
+                                reviews: recipes[index].reviews,
+                                serving: recipes[index].serving,
+                                ingredients: recipes[index].ingredients,
+                                prepTime: recipes[index].prepTime,
+                                cookTime: recipes[index].cookTime,
+                                instructions: recipes[index].instructions,
+                                mealType: recipes[index].mealType,)));
                   },
                   leading: Image.network('${recipes[index].image}'),
                   title: Text(
@@ -65,23 +77,21 @@ class _RecipeState extends State<Recipe> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          ...recipes[index].tags.map<Widget>(
-                            (tag){
-                              return Container(
-                                padding: EdgeInsets.symmetric(horizontal: 4),
-                                margin: EdgeInsets.symmetric(horizontal: 4),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(3),
-                                  color: Colors.blue.shade100,
-                                  
-                                ),
-                                child: Text('${tag}',style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold
-                                ),),
-                              );
-                            }
-                          ).toList(),
+                          ...recipes[index].tags.map<Widget>((tag) {
+                            return Container(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                              margin: EdgeInsets.symmetric(horizontal: 4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3),
+                                color: Colors.blue.shade100,
+                              ),
+                              child: Text(
+                                '${tag}',
+                                style: TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.bold),
+                              ),
+                            );
+                          }).toList(),
                         ],
                       ),
                       Row(

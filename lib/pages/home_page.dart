@@ -1,5 +1,6 @@
 import 'package:example_5/components/recipe.dart';
 import 'package:example_5/components/tab.dart';
+import 'package:example_5/pages/generic_recipe_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           Container(
             margin: EdgeInsets.symmetric(horizontal: 20.0),
             decoration: BoxDecoration(
-                color: Colors.brown.shade200,
+                color: Colors.blue.shade200,
                 borderRadius: BorderRadius.circular(10)),
             child: Column(
               children: [
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               controller: _tabController,
               children: [
               Recipe(),
-              Text("data"),
+              GenericRecipePage(),
             ]),
           )
         ],

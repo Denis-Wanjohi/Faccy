@@ -1,14 +1,15 @@
 class Recipe_model {
   String name;
   String image;
-  List<String> tags; 
+  List<String> tags;
   double ratings;
   double reviews;
   int serving;
-  List<String> ingredients; 
-  int prepTime; 
-  int cookTime; 
+  List<String> ingredients;
+  int prepTime;
+  int cookTime;
   List<String> instructions;
+  List<String> mealType;
 
   Recipe_model({
     required this.name,
@@ -21,9 +22,10 @@ class Recipe_model {
     required this.prepTime,
     required this.cookTime,
     required this.instructions,
+    required this.mealType,
   });
 
-    factory Recipe_model.fromJson(Map<String, dynamic> json) {
+  factory Recipe_model.fromJson(Map<String, dynamic> json) {
     return Recipe_model(
       name: json['name'],
       image: json['image'],
@@ -31,14 +33,12 @@ class Recipe_model {
       ratings: json['rating'].toDouble(),
       reviews: json['reviewCount'],
       serving: json['servings'],
-      ingredients: List<String>.from(json['ingredients'] ?? []), // Ensure correct type
+      ingredients:
+          List<String>.from(json['ingredients'] ?? []), // Ensure correct type
       prepTime: json['prepTimeMinutes'],
       cookTime: json['cookTimeMinutes'],
-      instructions: List<String>.from(json['instructions'] ?? []), // Ensure correct type
+      instructions: List<String>.from(json['instructions'] ?? []),
+      mealType: List<String>.from(json['mealType'] ?? []),
     );
   }
-
-
-
-  
 }
