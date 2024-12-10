@@ -2,8 +2,13 @@ import 'package:example_5/pages/home_page.dart';
 import 'package:example_5/pages/new_recipe_page.dart';
 import 'package:example_5/pages/recipe_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async{
+  // iinitiaize the db
+  await Hive.initFlutter();
+  // open the db to use
+  var recipes_box = await Hive.openBox('recipes_box');
   runApp(const MyApp());
 }
 
@@ -14,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.

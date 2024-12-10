@@ -16,9 +16,8 @@ class Recipe extends StatefulWidget {
 class _RecipeState extends State<Recipe> {
   late List<Recipe_model> recipes = [];
   Future<List<Recipe_model>> fetchPosts() async {
-    final url = Uri.parse('https://dummyjson.com/recipes?limit=10');
+    final url = Uri.parse('https://dummyjson.com/recipes?limit=1');
     final response = await http.get(url);
-    // print(jsonDecode(response.body)['recipes']);
 
     if (response.statusCode == 200) {
       for (var post in jsonDecode(response.body)['recipes']) {
@@ -55,17 +54,18 @@ class _RecipeState extends State<Recipe> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => RecipePage(
-                                name: recipes[index].name,
-                                image: recipes[index].image,
-                                tags: recipes[index].tags,
-                                ratings: recipes[index].ratings,
-                                reviews: recipes[index].reviews,
-                                serving: recipes[index].serving,
-                                ingredients: recipes[index].ingredients,
-                                prepTime: recipes[index].prepTime,
-                                cookTime: recipes[index].cookTime,
-                                instructions: recipes[index].instructions,
-                                mealType: recipes[index].mealType,)));
+                                  name: recipes[index].name,
+                                  image: recipes[index].image,
+                                  tags: recipes[index].tags,
+                                  ratings: recipes[index].ratings,
+                                  reviews: recipes[index].reviews,
+                                  serving: recipes[index].serving,
+                                  ingredients: recipes[index].ingredients,
+                                  prepTime: recipes[index].prepTime,
+                                  cookTime: recipes[index].cookTime,
+                                  instructions: recipes[index].instructions,
+                                  mealType: recipes[index].mealType,
+                                )));
                   },
                   leading: Image.network('${recipes[index].image}'),
                   title: Text(
@@ -131,9 +131,7 @@ class _RecipeState extends State<Recipe> {
                   ),
                 );
               });
-          // }
-
-          // return Text("hah");
+      
         });
   }
 }

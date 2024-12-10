@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class MyTextfield extends StatefulWidget {
   String label;
   TextEditingController controller;
-  MyTextfield({super.key, required this.label,required this.controller});
+  TextInputType type;
+  MyTextfield({super.key, required this.label, required this.controller,required this.type});
 
   @override
   State<MyTextfield> createState() => _MyTextfieldState();
@@ -17,6 +18,7 @@ class _MyTextfieldState extends State<MyTextfield> {
       padding: const EdgeInsets.all(8.0),
       child: TextField(
         controller: widget.controller,
+        keyboardType: widget.type,
         decoration: InputDecoration(
             label: Text('${widget.label}'),
             enabledBorder:

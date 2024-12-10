@@ -163,7 +163,7 @@ class _RecipePageState extends State<RecipePage> {
         ),
       ),
 
-      // INSTRUCTIONS
+      // INGRIDIENTS
       SliverToBoxAdapter(
         child: SingleChildScrollView(
           child: Padding(
